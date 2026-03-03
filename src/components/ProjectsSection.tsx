@@ -44,6 +44,41 @@ const projects = [
     color: "from-violet-600/20 via-purple-500/15 to-blue-500/20",
     icon: "🧠",
   },
+  {
+    name: "Voice Calculator",
+    tagline: "Natural Language Math Engine",
+    description: "A next-generation voice-powered calculator that understands natural language. Speak or type commands to perform arithmetic, calculus, graphing, unit conversions, equation solving, and matrix operations natively in the browser.",
+    features: [
+      {
+        icon: "🎙️",
+        name: "Voice Recognition",
+        desc: "Seamless Web Speech API",
+        detail: "Process complex mathematical queries completely hands-free using natural language processing. The engine parses the spoken intent into symbolic math equations and instantly computes the result."
+      },
+      {
+        icon: "📈",
+        name: "Advanced Math",
+        desc: "Calculus, Matrices & Graphing",
+        detail: "Powered by SymPy and NumPy, the engine can dynamically plot functions, solve algebraic equations, perform matrix algebra, and execute derivatives and integrals instantly."
+      },
+      {
+        icon: "🔄",
+        name: "Omni Conversion",
+        desc: "Smart Unit Converter",
+        detail: "Built-in intelligent conversion engines that translate physical units and measurements directly from conversational prompts, eliminating manual formula inputs."
+      },
+      {
+        icon: "⚡",
+        name: "Progressive Web App",
+        desc: "Installable Cross-Platform GUI",
+        detail: "Engineered as a lightweight PWA paired with a lightweight Flask backend, allowing it to be installed on any device for native-like performance and responsive accessibility."
+      }
+    ],
+    techStack: ["Python", "Flask", "SymPy", "JavaScript", "Web Speech API", "NumPy", "PWA"],
+    github: "https://github.com/Prathmesh1222/voice-calculator-",
+    color: "from-blue-600/20 via-cyan-500/15 to-teal-500/20",
+    icon: "🧮",
+  },
 ];
 
 const container = {
