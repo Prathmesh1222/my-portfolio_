@@ -13,7 +13,7 @@ export default function HeroTitle() {
       className="w-full text-center mb-16 px-4 pt-32"
     >
       {/* Large spaced-out name */}
-      <div className="flex justify-center items-center gap-2 md:gap-4 lg:gap-6 mb-6 flex-wrap">
+      <div className="flex justify-center items-center gap-1 sm:gap-2 md:gap-4 lg:gap-6 mb-4 sm:mb-6 flex-wrap">
         {letters.map((letter, i) => (
           <motion.span
             key={i}
@@ -31,7 +31,7 @@ export default function HeroTitle() {
               textShadow: "0 0 30px rgba(139, 92, 246, 0.5), 0 0 60px rgba(139, 92, 246, 0.2)",
               transition: { type: "spring", stiffness: 400, damping: 10 },
             }}
-            className="hero-letter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-[var(--color-foreground)] tracking-wider select-none cursor-default hover:text-violet-500 transition-colors duration-200"
+            className="hero-letter text-4xl min-[400px]:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-[var(--color-foreground)] tracking-wider select-none cursor-default hover:text-violet-500 transition-colors duration-200"
           >
             {letter}
           </motion.span>

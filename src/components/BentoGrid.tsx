@@ -239,7 +239,7 @@ function ProfileCard() {
           src="/prathmesh.jpg"
           alt="Prathmesh"
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
           priority
           sizes="(max-width: 768px) 100vw, 25vw"
         />
