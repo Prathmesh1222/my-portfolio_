@@ -50,65 +50,30 @@ export default function AchievementsPage() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
-        className="w-full rounded-xl overflow-hidden shadow-2xl border border-[var(--color-card-border)] bg-gray-50 dark:bg-[#0d1117]"
+        className="w-full flex justify-center"
       >
-        {/* Terminal Header */}
-        <div className="flex items-center px-4 py-3 bg-gray-200 dark:bg-[#161b22] border-b border-[var(--color-card-border)]">
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-            <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-          </div>
-          <div className="mx-auto text-xs font-mono text-gray-500 dark:text-[#8b949e] flex items-center gap-2">
-            prathmesh@production:~/achievements
-          </div>
-        </div>
-
-        {/* Terminal Body */}
-        <div className="p-6 md:p-8 font-mono text-sm md:text-base">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="text-green-600 dark:text-[#3fb950] font-bold">➜</span>
-            <span className="text-blue-600 dark:text-[#58a6ff] font-bold">~</span>
-            <span className="text-purple-600 dark:text-[#d2a8ff]">cat</span>
-            <span className="text-gray-800 dark:text-[#c9d1d9]">milestones.json</span>
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-              className="w-2 h-5 bg-gray-800 dark:bg-[#c9d1d9] inline-block"
-            />
-          </div>
-
-          <div className="flex flex-col gap-8 text-xs sm:text-sm">
-            <div className="text-gray-600 dark:text-[#8b949e]">[</div>
-            {achievements.map((achievement, idx) => (
-              <div key={idx} className="pl-4 sm:pl-8 flex flex-col gap-2">
-                <div className="text-gray-600 dark:text-[#8b949e]">{'{'}</div>
-                <div className="pl-4 sm:pl-8 flex flex-col gap-1">
-                  <div>
-                    <span className="text-blue-600 dark:text-[#58a6ff]">"title"</span>
-                    <span className="text-gray-600 dark:text-[#8b949e]">: </span>
-                    <span className="text-green-600 dark:text-[#27c93f]">"{achievement.title}"</span>
-                    <span className="text-gray-600 dark:text-[#8b949e]">,</span>
-                  </div>
-                  <div>
-                    <span className="text-blue-600 dark:text-[#58a6ff]">"date"</span>
-                    <span className="text-gray-600 dark:text-[#8b949e]">: </span>
-                    <span className="text-orange-500 dark:text-[#e0af68]">"{achievement.date}"</span>
-                    <span className="text-gray-600 dark:text-[#8b949e]">,</span>
-                  </div>
-                  <div>
-                    <span className="text-blue-600 dark:text-[#58a6ff]">"description"</span>
-                    <span className="text-gray-600 dark:text-[#8b949e]">: </span>
-                    <span className="text-gray-800 dark:text-[#c9d1d9] leading-relaxed">"{achievement.description}"</span>
-                  </div>
-                </div>
-                <div className="text-gray-600 dark:text-[#8b949e]">
-                  {idx === achievements.length - 1 ? '}' : '},'}
-                </div>
+        <div className="flex flex-col gap-6 w-full max-w-3xl">
+          {achievements.map((achievement, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.1, type: "spring", stiffness: 200, damping: 20 }}
+              whileHover={{ scale: 1.02 }}
+              className="group flex flex-col gap-3 p-6 sm:p-8 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] hover:bg-[var(--color-card-hover)] transition-all duration-300 card-glow relative overflow-hidden"
+            >
+              {/* Top gradient reveal on hover */}
+              <motion.div
+                className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <h3 className="text-xl font-bold text-[var(--color-foreground)]">{achievement.title}</h3>
+                <span className="text-xs font-mono text-violet-400 bg-violet-500/10 px-3 py-1 rounded-full w-fit border border-violet-500/20">{achievement.date}</span>
               </div>
-            ))}
-            <div className="text-gray-600 dark:text-[#8b949e]">]</div>
-          </div>
+              <p className="text-[var(--color-muted)] leading-relaxed text-sm sm:text-base">{achievement.description}</p>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </div>
