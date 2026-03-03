@@ -257,13 +257,6 @@ export default function ProjectsSection() {
                         : "border-[var(--color-card-border)] bg-[var(--color-card-hover)] hover:border-violet-500/20"
                     }`}
                   >
-                    <motion.span
-                      className="text-xl mb-2 block"
-                      animate={activeFeature === i ? { scale: [1, 1.2, 1] } : {}}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {feature.icon}
-                    </motion.span>
                     <h4 className={`text-sm font-semibold mb-1 transition-colors ${
                       activeFeature === i ? "text-violet-500" : "text-[var(--color-foreground)]"
                     }`}>
@@ -289,9 +282,6 @@ export default function ProjectsSection() {
                   >
                     <div className="p-5 rounded-xl border border-violet-500/20 bg-violet-500/5">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="text-2xl">
-                          {project.features[activeFeature].icon}
-                        </span>
                         <h4 className="text-base font-semibold text-violet-500">
                           {project.features[activeFeature].name}
                         </h4>
