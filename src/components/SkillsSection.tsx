@@ -45,16 +45,16 @@ export default function SkillsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className="w-full rounded-xl overflow-hidden shadow-2xl border border-[var(--color-card-border)] bg-[#0d1117]"
+        className="w-full rounded-xl overflow-hidden shadow-2xl border border-[var(--color-card-border)] bg-gray-50 dark:bg-[#0d1117]"
       >
         {/* Terminal Header */}
-        <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-white/10">
+        <div className="flex items-center px-4 py-3 bg-gray-200 dark:bg-[#161b22] border-b border-[var(--color-card-border)]">
           <div className="flex gap-2">
             <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
             <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
             <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
           </div>
-          <div className="mx-auto text-xs font-mono text-[#8b949e] flex items-center gap-2">
+          <div className="mx-auto text-xs font-mono text-gray-500 dark:text-[#8b949e] flex items-center gap-2">
             prathmesh@production:~/stack
           </div>
         </div>
@@ -62,28 +62,28 @@ export default function SkillsSection() {
         {/* Terminal Body */}
         <div className="p-6 md:p-8 font-mono text-sm md:text-base">
           <div className="flex items-center gap-3 mb-8">
-            <span className="text-[#3fb950] font-bold">➜</span>
-            <span className="text-[#58a6ff] font-bold">~</span>
-            <span className="text-[#d2a8ff]">cat</span>
-            <span className="text-[#c9d1d9]">capabilities.json</span>
+            <span className="text-green-600 dark:text-[#3fb950] font-bold">➜</span>
+            <span className="text-blue-600 dark:text-[#58a6ff] font-bold">~</span>
+            <span className="text-purple-600 dark:text-[#d2a8ff]">cat</span>
+            <span className="text-gray-800 dark:text-[#c9d1d9]">capabilities.json</span>
             <motion.span
               animate={{ opacity: [1, 0] }}
               transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-              className="w-2 h-5 bg-[#c9d1d9] inline-block"
+              className="w-2 h-5 bg-gray-800 dark:bg-[#c9d1d9] inline-block"
             />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
             {skillCategories.map((category) => (
               <div key={category.title}>
-                <h4 className="text-[#58a6ff] font-bold tracking-wider mb-4 text-xs md:text-sm">
+                <h4 className="text-blue-600 dark:text-[#58a6ff] font-bold tracking-wider mb-4 text-xs md:text-sm">
                   {category.title}
                 </h4>
                 <ul className="space-y-3">
                   {category.skills.map((skill) => (
                     <li
                       key={skill}
-                      className="text-[#8b949e] hover:text-[#c9d1d9] transition-colors duration-200 cursor-default"
+                      className="text-gray-600 hover:text-gray-900 dark:text-[#8b949e] dark:hover:text-[#c9d1d9] transition-colors duration-200 cursor-default"
                     >
                       {skill}
                     </li>
