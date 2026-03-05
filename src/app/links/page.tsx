@@ -15,7 +15,7 @@ const myLinks = [
   {
     category: "CONTACT",
     items: [
-      { name: "Gmail", url: "mailto:prathmesh@example.com" },
+      { name: "Gmail", url: "mailto:prathmeshjadhav3651@gmail.com" },
       { name: "Discord", url: "#" },
     ],
   },

@@ -22,14 +22,14 @@ export default function CVPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-foreground)] mb-2 tracking-tight">
-              Prathmesh Karkhelikar
+              Prathmesh Jadhav
             </h1>
             <p className="text-xl text-violet-500 font-medium mb-4">
               Full-Stack Developer & AI Architect
             </p>
             <div className="flex flex-wrap gap-4 text-sm text-[var(--color-muted)]">
-              <a href="mailto:prathmesh1222@gmail.com" className="hover:text-violet-400 transition-colors flex items-center gap-2">
-                <span>✉</span> prathmesh1222@gmail.com
+              <a href="mailto:prathmeshjadhav3651@gmail.com" className="hover:text-violet-400 transition-colors flex items-center gap-2">
+                <span>✉</span> prathmeshjadhav3651@gmail.com
               </a>
               <a href="https://github.com/Prathmesh1222" target="_blank" rel="noopener noreferrer" className="hover:text-violet-400 transition-colors flex items-center gap-2">
                 <span></span> github.com/Prathmesh1222
@@ -84,7 +84,7 @@ export default function CVPage() {
               <motion.div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="flex flex-col md:flex-row justify-between md:items-center mb-2">
                 <h3 className="text-xl font-bold text-[var(--color-foreground)]">B.Tech Computer Science and Engineering</h3>
-                <span className="text-sm font-mono text-violet-400 bg-violet-500/10 px-3 py-1 rounded-full w-fit mt-2 md:mt-0">2022 - 2026</span>
+                <span className="text-sm font-mono text-violet-400 bg-violet-500/10 px-3 py-1 rounded-full w-fit mt-2 md:mt-0">2024 - 2028</span>
               </div>
               <p className="text-[var(--color-foreground)] font-medium mb-2">Vellore Institute of Technology, Bhopal</p>
               <ul className="list-disc list-inside text-sm text-[var(--color-muted)] space-y-1">

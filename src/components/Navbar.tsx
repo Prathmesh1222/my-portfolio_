@@ -114,7 +114,7 @@ export default function Navbar() {
 
         {/* Contact Me */}
         <motion.a
-          href="mailto:prathmesh1222@gmail.com"
+          href="mailto:prathmeshjadhav3651@gmail.com"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.7 }}

@@ -252,7 +252,7 @@ function ProfileCard() {
         <h3 className="text-xs uppercase tracking-widest text-gray-300 mb-1 font-medium">
           Portrait
         </h3>
-        <p className="text-white font-medium text-lg">Prathmesh</p>
+        <p className="text-white font-medium text-lg">Prathmesh Jadhav</p>
       </div>
     </TiltCard>
   );
