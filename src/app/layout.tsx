@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import dynamic from "next/dynamic";
 import "./globals.css";
-
-const CursorGlow = dynamic(() => import("@/components/CursorGlow"), {
-  ssr: false,
-});
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -47,7 +42,6 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <CursorGlow />
           {children}
         </ThemeProvider>
       </body>
