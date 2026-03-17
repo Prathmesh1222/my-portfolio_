@@ -4,20 +4,16 @@ import { motion } from "framer-motion";
 
 const skillCategories = [
   {
-    title: "LANGUAGES",
-    skills: ["C++", "Python", "JavaScript", "TypeScript"],
+    title: "BACKEND DEVELOPMENT",
+    skills: ["Python", "Node.js", "RESTful APIs"],
   },
   {
-    title: "FRAMEWORKS",
-    skills: ["React", "Next.js", "Node.js", "Tailwind CSS", "FastAPI"],
+    title: "AI AUTOMATION",
+    skills: ["n8n", "AI Agents", "NLP"],
   },
   {
-    title: "AI / ML",
-    skills: ["Generative AI", "LLMs", "RAG"],
-  },
-  {
-    title: "TOOLS / OS",
-    skills: ["Git", "Ubuntu"],
+    title: "TOOLS",
+    skills: ["Text-to-Speech", "Git", "Ubuntu Linux"],
   },
 ];
 

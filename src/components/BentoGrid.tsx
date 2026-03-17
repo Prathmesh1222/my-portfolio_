@@ -119,16 +119,15 @@ function HoverCard({
 
 /* Tech marquee badges */
 const techBadges = [
-  { name: "C++", icon: "⚡" },
-  { name: "Ubuntu", icon: "🐧" },
-  { name: "Generative AI", icon: "🤖" },
-  { name: "LLMs", icon: "🧠" },
-  { name: "RAG", icon: "📚" },
   { name: "Python", icon: "🐍" },
-  { name: "React", icon: "⚛️" },
-  { name: "Next.js", icon: "▲" },
-  { name: "TypeScript", icon: "📘" },
-  { name: "FastAPI", icon: "🚀" },
+  { name: "Node.js", icon: "⚡" },
+  { name: "RESTful APIs", icon: "🔗" },
+  { name: "n8n", icon: "⚙️" },
+  { name: "AI Agents", icon: "🤖" },
+  { name: "NLP", icon: "🧠" },
+  { name: "Text-to-Speech", icon: "🔊" },
+  { name: "Git", icon: "📦" },
+  { name: "Ubuntu Linux", icon: "🐧" },
 ];
 
 function TechMarquee() {

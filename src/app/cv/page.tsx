@@ -106,10 +106,9 @@ export default function CVPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { category: "Languages", tools: "Python, JavaScript, TypeScript, C++, HTML/CSS, SQL" },
-              { category: "Frameworks & Libs", tools: "React.js, Next.js, Node.js, Express, FastAPI, Flask, TailwindCSS, Framer Motion" },
-              { category: "AI & Data", tools: "LangChain, CrewAI, Retrieval-Augmented Generation (RAG), SymPy, FAISS, Gemini/OpenAI API" },
-              { category: "Tools & DevOps", tools: "Git, GitHub, Vercel, Render, Postman, Linux (Ubuntu), FFmpeg" }
+              { category: "Backend Development", tools: "Python, Node.js, RESTful APIs" },
+              { category: "AI Automation", tools: "n8n, AI Agents, NLP" },
+              { category: "Tools", tools: "Text-to-Speech, Git, Ubuntu Linux" }
             ].map((skill, idx) => (
               <div key={idx} className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
                 <h3 className="font-bold text-violet-400 mb-2">{skill.category}</h3>
