@@ -3,28 +3,54 @@
 import { useEffect, useRef } from "react";
 import { useTheme } from "./ThemeProvider";
 
-const DARK_COLORS = [
-  "#8b5cf6", "#a78bfa", "#ec4899", "#3b82f6",
-  "#f59e0b", "#10b981", "#ef4444", "#6366f1",
+interface Particle {
+  x: number;
+  y: number;
+  originX: number;
+  originY: number;
+  size: number;
+  color: string;
+  speed: number;
+  angle: number;
+  drift: number;
+  opacity: number;
+  pulse: number;
+  pulseSpeed: number;
+}
+
+const DARK_PALETTE = [
+  "#8b5cf6", "#a78bfa", "#c084fc",  // violets
+  "#818cf8", "#6366f1", "#4f46e5",  // indigos
+  "#ec4899", "#f472b6", "#fb7185",  // pinks
+  "#3b82f6", "#60a5fa", "#2563eb",  // blues
+  "#f59e0b", "#fbbf24",             // ambers
+  "#10b981", "#34d399",             // greens
 ];
 
-const LIGHT_COLORS = [
-  "#7c3aed", "#8b5cf6", "#db2777", "#2563eb",
-  "#d97706", "#059669", "#dc2626", "#4f46e5",
+const LIGHT_PALETTE = [
+  "#7c3aed", "#8b5cf6", "#a78bfa",
+  "#6366f1", "#4f46e5", "#4338ca",
+  "#db2777", "#ec4899", "#f472b6",
+  "#2563eb", "#3b82f6", "#60a5fa",
+  "#d97706", "#f59e0b",
+  "#059669", "#10b981",
 ];
-
-const PARTICLE_COUNT = 14;
 
 export default function CursorGlow() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: -500, y: -500 });
-  const smoothMouseRef = useRef({ x: -500, y: -500 });
   const rafId = useRef<number>(0);
   const { theme } = useTheme();
   const themeRef = useRef(theme);
+  const particlesRef = useRef<Particle[]>([]);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
 
   useEffect(() => {
     themeRef.current = theme;
+    // Update colors when theme changes
+    const palette = theme === "dark" ? DARK_PALETTE : LIGHT_PALETTE;
+    for (const p of particlesRef.current) {
+      p.color = palette[Math.floor(Math.random() * palette.length)];
+    }
   }, [theme]);
 
   useEffect(() => {
@@ -33,9 +59,41 @@ export default function CursorGlow() {
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
+    let w = 0;
+    let h = 0;
+
+    const createParticles = () => {
+      const count = Math.min(Math.floor((w * h) / 4000), 300);
+      const palette = themeRef.current === "dark" ? DARK_PALETTE : LIGHT_PALETTE;
+      const cx = w / 2;
+      const cy = h / 2;
+
+      particlesRef.current = Array.from({ length: count }, () => {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * Math.max(w, h) * 0.6;
+        return {
+          x: cx + Math.cos(angle) * dist,
+          y: cy + Math.sin(angle) * dist,
+          originX: cx,
+          originY: cy,
+          size: Math.random() * 3.5 + 1,
+          color: palette[Math.floor(Math.random() * palette.length)],
+          speed: 0.15 + Math.random() * 0.4,
+          angle,
+          drift: Math.random() * 0.003 + 0.001,
+          opacity: Math.random() * 0.5 + 0.3,
+          pulse: Math.random() * Math.PI * 2,
+          pulseSpeed: 0.01 + Math.random() * 0.02,
+        };
+      });
+    };
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+      createParticles();
     };
     resize();
     window.addEventListener("resize", resize);
@@ -46,77 +104,68 @@ export default function CursorGlow() {
     };
     window.addEventListener("mousemove", onMouseMove);
 
-    // Each orbiting particle has its own angle offset, radius, speed, size
-    const orbiters = Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
-      angle: (i / PARTICLE_COUNT) * Math.PI * 2,
-      radius: 18 + Math.random() * 30,
-      speed: 0.008 + Math.random() * 0.015,
-      size: 2 + Math.random() * 3.5,
-      colorIdx: i % DARK_COLORS.length,
-      opacity: 0.5 + Math.random() * 0.4,
-    }));
-
-    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-
-    let time = 0;
     const draw = () => {
-      time++;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Smooth cursor tracking
-      smoothMouseRef.current.x = lerp(smoothMouseRef.current.x, mouseRef.current.x, 0.15);
-      smoothMouseRef.current.y = lerp(smoothMouseRef.current.y, mouseRef.current.y, 0.15);
-
-      const cx = smoothMouseRef.current.x;
-      const cy = smoothMouseRef.current.y;
-
-      // Skip drawing if mouse hasn't entered yet
-      if (cx < -100) {
-        rafId.current = requestAnimationFrame(draw);
-        return;
-      }
-
+      ctx.clearRect(0, 0, w, h);
       const isDark = themeRef.current === "dark";
-      const colors = isDark ? DARK_COLORS : LIGHT_COLORS;
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      const cx = w / 2;
+      const cy = h / 2;
+      const maxDist = Math.sqrt(cx * cx + cy * cy);
 
-      // Draw each orbiting particle
-      for (const orb of orbiters) {
-        orb.angle += orb.speed;
+      for (const p of particlesRef.current) {
+        // Slowly drift outward from center (antigravity)
+        const dx = p.x - cx;
+        const dy = p.y - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
 
-        // Slight breathing radius
-        const breathe = Math.sin(time * 0.02 + orb.angle) * 4;
-        const r = orb.radius + breathe;
+        if (dist > 0) {
+          p.x += (dx / dist) * p.speed * 0.3;
+          p.y += (dy / dist) * p.speed * 0.3;
+        }
 
-        const px = cx + Math.cos(orb.angle) * r;
-        const py = cy + Math.sin(orb.angle) * r;
+        // Gentle orbital drift
+        p.angle += p.drift;
+        p.x += Math.cos(p.angle) * 0.2;
+        p.y += Math.sin(p.angle) * 0.2;
 
-        // Particle glow
+        // Mouse interaction — particles scatter away from cursor
+        const mdx = p.x - mx;
+        const mdy = p.y - my;
+        const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mDist < 120 && mDist > 0) {
+          const force = (120 - mDist) / 120 * 2;
+          p.x += (mdx / mDist) * force;
+          p.y += (mdy / mDist) * force;
+        }
+
+        // Reset particle when it drifts too far off screen
+        if (p.x < -50 || p.x > w + 50 || p.y < -50 || p.y > h + 50) {
+          const resetAngle = Math.random() * Math.PI * 2;
+          const resetDist = Math.random() * 80;
+          p.x = cx + Math.cos(resetAngle) * resetDist;
+          p.y = cy + Math.sin(resetAngle) * resetDist;
+        }
+
+        // Pulse for size breathing
+        p.pulse += p.pulseSpeed;
+        const sizeMultiplier = 1 + Math.sin(p.pulse) * 0.3;
+
+        // Fade based on distance from center
+        const distRatio = Math.min(dist / maxDist, 1);
+        const fadeOpacity = p.opacity * (1 - distRatio * 0.6);
+
+        // Draw the particle
         ctx.save();
-        ctx.globalAlpha = orb.opacity * (isDark ? 0.7 : 0.5);
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = colors[orb.colorIdx];
-
-        // Draw circle
+        ctx.globalAlpha = fadeOpacity * (isDark ? 1 : 0.65);
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = isDark ? 6 : 3;
+        ctx.shadowColor = p.color;
         ctx.beginPath();
-        ctx.arc(px, py, orb.size, 0, Math.PI * 2);
-        ctx.fillStyle = colors[orb.colorIdx];
+        ctx.arc(p.x, p.y, p.size * sizeMultiplier, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
-
-      // Subtle center glow around cursor
-      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 60);
-      if (isDark) {
-        grad.addColorStop(0, "rgba(139, 92, 246, 0.06)");
-        grad.addColorStop(1, "rgba(139, 92, 246, 0)");
-      } else {
-        grad.addColorStop(0, "rgba(139, 92, 246, 0.04)");
-        grad.addColorStop(1, "rgba(139, 92, 246, 0)");
-      }
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(cx, cy, 60, 0, Math.PI * 2);
-      ctx.fill();
 
       rafId.current = requestAnimationFrame(draw);
     };
@@ -133,7 +182,7 @@ export default function CursorGlow() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-[9999] pointer-events-none"
+      className="fixed inset-0 z-0 pointer-events-none"
       aria-hidden="true"
     />
   );
