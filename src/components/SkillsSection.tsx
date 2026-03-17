@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 
 const skillCategories = [
   {
+    title: "LANGUAGES",
+    skills: ["C++", "Python", "Java", "SQL"],
+  },
+  {
     title: "BACKEND DEVELOPMENT",
     skills: ["Python", "Node.js", "RESTful APIs"],
   },
