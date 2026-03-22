@@ -37,7 +37,7 @@ export default function CVPage() {
             </div>
           </div>
           <motion.a
-            href="/Prathmesh_Jadhav_Resume.pdf"
+            href="/Prathmesh_Resume.pdf"
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white font-medium transition-all shadow-lg shadow-violet-500/20 flex items-center gap-2 whitespace-nowrap"
