@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+
+# Prathmesh Jadhav — Portfolio
+
+**Full-Stack Developer | AI Automation Architect**
+
+[Live Site](https://prathmesh-portfolio.vercel.app) · [Resume](https://prathmesh-portfolio.vercel.app/Prathmesh_Resume.pdf) · [LinkedIn](https://www.linkedin.com/in/prathmesh1222/)
+
+---
+
+</div>
+
+A modern, animated portfolio built with **Next.js 14**, **Tailwind CSS**, and **Framer Motion**. Features a glassmorphism design language, interactive bento-grid layout, and a fully responsive architecture across light and dark themes.
+
+## Preview
+
+| Dark Mode | Light Mode |
+|-----------|------------|
+| Frosted glass cards, violet accent system, dot-grid background | Clean whites with soft shadows, maintained contrast and readability |
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **Framework** | Next.js 14 (App Router) |
+| **Styling** | Tailwind CSS v3, CSS Custom Properties |
+| **Animation** | Framer Motion (spring physics, scroll-triggered, 3D tilt) |
+| **Language** | TypeScript |
+| **Deployment** | Vercel (automatic CI/CD from `main`) |
+| **Fonts** | Inter, JetBrains Mono (via `next/font`) |
+
+## Architecture
+
+```
+src/
+├── app/
+│   ├── page.tsx              # Home — Hero, Bento Grid, Projects, Skills
+│   ├── cv/page.tsx           # Digital CV with downloadable PDF
+│   ├── achievements/page.tsx # Certifications & Hackathons
+│   ├── links/page.tsx        # Social Links
+│   ├── guestbook/page.tsx    # Guestbook
+│   ├── layout.tsx            # Root layout + ThemeProvider
+│   └── globals.css           # Design tokens + frosted glass system
+├── components/
+│   ├── Navbar.tsx             # Floating glassmorphism nav
+│   ├── HeroTitle.tsx          # Animated letter-by-letter reveal
+│   ├── HeroChat.tsx           # AI chat input decoration
+│   ├── BentoGrid.tsx          # 3D tilt cards, tech marquee, location
+│   ├── ProjectsSection.tsx    # Expandable project cards with features
+│   ├── FeaturedProject.tsx    # Highlighted project showcase
+│   ├── SkillsSection.tsx      # Categorized skill pills
+│   ├── ExploreSection.tsx     # Navigation cards to subpages
+│   ├── ThemeProvider.tsx      # Dark/Light theme context
+│   └── Footer.tsx             # Minimal footer
+```
+
+## Features
+
+**Design System**
+- Frosted glass cards with `backdrop-filter: blur()` over dot-grid backgrounds
+- CSS custom properties for seamless dark/light theme switching
+- Premium shadow cascades with cubic-bezier hover transitions
+- Violet accent system with consistent gradient language
+
+**Interactions**
+- Letter-by-letter hero animation with hover glow effects
+- 3D perspective tilt on bento grid cards (mouse-tracking)
+- Spring-physics scroll animations via Framer Motion
+- Expandable project feature tabs with animated detail panels
+
+**Pages**
+- **Home** — Hero, About (Bento Grid), Featured Projects, Skills
+- **CV** — Digital resume with PDF download
+- **Achievements** — Certifications (IIT Bombay, IIT Kharagpur, Google, IBM) and Hackathons
+- **Links** — Social profiles and contact
+- **Guestbook** — Interactive message board
+
+**Performance**
+- Optimized images (1.28MB → 49KB compression)
+- Lazy-loaded below-fold components via `next/dynamic`
+- Font display swap to prevent FOIT
+- Static page generation for all routes
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Clone
+git clone https://github.com/Prathmesh1222/my-portfolio_.git
+cd my-portfolio_
+
+# Install
+npm install
+
+# Development
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Production build
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deployed on **Vercel** with automatic deployments from the `main` branch. Every push triggers a production build.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is open source and available under the [MIT License](LICENSE).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<div align="center">
 
-## Deploy on Vercel
+**Built by Prathmesh Jadhav**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[prathmeshjadhav3651@gmail.com](mailto:prathmeshjadhav3651@gmail.com)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</div>
