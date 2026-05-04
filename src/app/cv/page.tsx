@@ -130,6 +130,11 @@ export default function CVPage() {
           <div className="flex flex-col gap-6">
             {[
               {
+                name: "Enterprise IT Copilot",
+                role: "Agentic RAG & Generative UI",
+                desc: "Engineered a multi-agent AI system with LangChain, FAISS, and Llama 3.1 to resolve IT support bottlenecks, featuring hybrid search, cross-encoder reranking, and dynamic generative UI for ticket escalation."
+              },
+              {
                 name: "Cyphraxi",
                 role: "AI-Powered Study Engine",
                 desc: "Developed a Retrieval-Augmented Generation (RAG) platform mapping raw lectures to instantaneous, deeply grounded theory answers utilizing vector-search and LLM integration."
