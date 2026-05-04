@@ -5,6 +5,11 @@ import Link from "next/link";
 
 const certifications = [
   {
+    title: "Marketing Analytics (NPTEL – SWAYAM)",
+    org: "IIT Kharagpur",
+    date: "Ongoing",
+  },
+  {
     title: "LLMs using Python Workshop",
     org: "Techfest, IIT Bombay",
     date: "Dec 2025",
