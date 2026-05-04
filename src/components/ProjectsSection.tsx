@@ -5,6 +5,41 @@ import { useState } from "react";
 
 const projects = [
   {
+    name: "Enterprise IT Copilot",
+    tagline: "Agentic RAG & Generative UI",
+    description: "An advanced, multi-agent AI system designed to resolve IT support bottlenecks by unifying scattered documentation, historical ticket databases, and dynamic issue escalation into a single conversational interface.",
+    features: [
+      {
+        icon: "🧠",
+        name: "Self-Reflective Agent",
+        desc: "LangChain ReAct Orchestrator",
+        detail: "Powered by Llama 3.1, the agent intercepts queries, categorizes issues, and evaluates context before resolution, strictly avoiding hallucination by enforcing citation and utilizing an escalation tool.",
+      },
+      {
+        icon: "🔍",
+        name: "Hybrid Search & Rerank",
+        desc: "BM25 + Semantic Search",
+        detail: "Implements FAISS for vector search and BM25 for keyword search, merged via an Ensemble Retriever. A HuggingFace Cross-Encoder reranks results to mathematically guarantee high precision.",
+      },
+      {
+        icon: "✨",
+        name: "Generative UI",
+        desc: "Interactive Component Streaming",
+        detail: "When issues require escalation, the backend streams a JSON payload to the frontend which dynamically renders a native, interactive ticket submission form directly inside the chat interface.",
+      },
+      {
+        icon: "📊",
+        name: "Integrated Analytics",
+        desc: "Real-time Dashboard",
+        detail: "A native HTML/JS dashboard utilizing Chart.js to visualize historical ticket data like volume, types, and priorities directly fetched from the backend SQLite database.",
+      },
+    ],
+    techStack: ["Python", "Flask", "LangChain", "FAISS", "Llama 3.1", "Vanilla JS", "SQLite"],
+    github: "https://github.com/Prathmesh1222/enterprise-it-copilot",
+    color: "from-emerald-600/20 via-green-500/15 to-teal-500/20",
+    icon: "💼",
+  },
+  {
     name: "Cyphraxi",
     tagline: "AI-Powered Study Engine",
     description:
