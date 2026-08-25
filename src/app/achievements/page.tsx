@@ -43,7 +43,9 @@ const certifications: Certification[] = [
   {
     title: "Prepare Data for ML APIs on Google Cloud",
     org: "Google Cloud",
-    badge: "Skill Badge",
+    badge: "Skill Badge (Smart Analytics)",
+    date: "2026",
+    credentialId: "GCP Smart Analytics",
     badgeColor: "from-blue-500 to-green-500",
     icon: "☁️",
     image: "/certificates/gcp-ml-data.png",
@@ -51,8 +53,9 @@ const certifications: Certification[] = [
   },
   {
     title: "Machine Learning with Python",
-    org: "IBM",
+    org: "IBM (Coursera Verified)",
     badge: "IBM Verified",
+    date: "Nov 17, 2025",
     credentialId: "ID: F1BT7A4ZJJYN",
     badgeColor: "from-blue-600 to-indigo-600",
     icon: "🤖",
@@ -62,7 +65,9 @@ const certifications: Certification[] = [
   {
     title: "Marketing Analytics",
     org: "IIT Kharagpur (NPTEL – SWAYAM)",
-    badge: "Elite Certificate",
+    badge: "Elite (72% Score)",
+    date: "Jan-Apr 2026",
+    credentialId: "Roll: NPTEL26MG33S1052405566",
     badgeColor: "from-amber-500 to-yellow-600",
     icon: "🏅",
     image: "/certificates/nptel-marketing.png",
@@ -71,7 +76,9 @@ const certifications: Certification[] = [
   {
     title: "Cloud Computing",
     org: "IIT Kharagpur (NPTEL – SWAYAM)",
-    badge: "Elite Certificate",
+    badge: "Elite (60% Score)",
+    date: "Jan-Apr 2025",
+    credentialId: "Roll: NPTEL25CS11S1050500058",
     badgeColor: "from-violet-600 to-purple-600",
     icon: "☁️",
     image: "/certificates/nptel-cloud.png",
