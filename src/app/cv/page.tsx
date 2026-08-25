@@ -37,7 +37,7 @@ export default function CVPage() {
             </div>
           </div>
           <motion.a
-            href="/Prathmesh_Resume.pdf"
+            href="/PrathmeshJadhav_resume-1.pdf"
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white font-medium transition-all shadow-lg shadow-violet-500/20 flex items-center gap-2 whitespace-nowrap"
@@ -106,9 +106,12 @@ export default function CVPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { category: "Backend Development", tools: "Python, Node.js, RESTful APIs" },
-              { category: "AI Automation", tools: "n8n, AI Agents, NLP" },
-              { category: "Tools", tools: "Text-to-Speech, Git, Ubuntu Linux" }
+              { category: "Programming", tools: "Python, Java, C++, SQL, JavaScript" },
+              { category: "AI / ML", tools: "GenAI, Agentic AI, RAG, GraphRAG, LangChain, LangGraph, FAISS, LLMs, NLP" },
+              { category: "Frontend", tools: "React.js, HTML, CSS, Vite" },
+              { category: "Backend", tools: "Flask, FastAPI, REST APIs" },
+              { category: "Automation", tools: "n8n, MCP, Gmail API, Airtable" },
+              { category: "Tools", tools: "Git, GitHub, Docker, Linux, GCP, Vercel" }
             ].map((skill, idx) => (
               <div key={idx} className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
                 <h3 className="font-bold text-violet-400 mb-2">{skill.category}</h3>

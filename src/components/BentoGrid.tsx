@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import Image from "next/image";
 
 const container = {
@@ -22,48 +22,6 @@ const cardItem = {
   },
 };
 
-/* 3D Tilt Card wrapper */
-function TiltCard({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-0.5, 0.5], [6, -6]);
-  const rotateY = useTransform(x, [-0.5, 0.5], [-6, 6]);
-
-  const handleMouse = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const handleLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseLeave={handleLeave}
-      style={{ rotateX, rotateY, transformPerspective: 800 }}
-      variants={cardItem}
-      whileHover={{ scale: 1.03 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 /* Hover-reveal card */
 function HoverCard({
   title,
@@ -79,7 +37,8 @@ function HoverCard({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <TiltCard
+    <motion.div
+      variants={cardItem}
       className={`relative overflow-hidden rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] p-6 cursor-pointer transition-shadow duration-500 card-glow ${className}`}
     >
       <div
@@ -91,11 +50,7 @@ function HoverCard({
           {title}
         </h3>
         <div className="relative min-h-[60px]">
-          <motion.p
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
+          <p
             className={`text-sm leading-relaxed transition-colors duration-500 ${
               hovered
                 ? "text-[var(--color-foreground)]"
@@ -103,71 +58,49 @@ function HoverCard({
             }`}
           >
             {hovered ? hoverText : defaultText}
-          </motion.p>
+          </p>
         </div>
         {/* Accent line at bottom */}
-        <motion.div
-          className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-violet-500 to-purple-500"
-          initial={{ width: "0%" }}
-          animate={{ width: hovered ? "100%" : "0%" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+        <div
+          className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-violet-500 to-purple-500 transition-all duration-500 ease-out ${
+            hovered ? "w-full" : "w-0"
+          }`}
         />
       </div>
-    </TiltCard>
+    </motion.div>
   );
 }
 
-/* Tech marquee badges */
-const techBadges = [
-  { name: "Python", icon: "🐍" },
-  { name: "Node.js", icon: "⚡" },
-  { name: "RESTful APIs", icon: "🔗" },
-  { name: "n8n", icon: "⚙️" },
-  { name: "AI Agents", icon: "🤖" },
-  { name: "NLP", icon: "🧠" },
-  { name: "Text-to-Speech", icon: "🔊" },
-  { name: "Git", icon: "📦" },
-  { name: "Ubuntu Linux", icon: "🐧" },
-];
+/* Static Tech Stack card — replaces the old animated marquee */
+function TechStackCard() {
+  const techCategories = [
+    { label: "Programming", items: "Python, Java, C++, SQL, JavaScript" },
+    { label: "AI/ML", items: "GenAI, Agentic AI, RAG, LangChain, LLMs, NLP" },
+    { label: "Frontend", items: "React.js, HTML, CSS, Vite" },
+    { label: "Backend", items: "Flask, FastAPI, REST APIs" },
+    { label: "Automation", items: "n8n, MCP, Gmail API, Airtable" },
+    { label: "Tools", items: "Git, Docker, Linux, GCP, Vercel" },
+  ];
 
-function TechMarquee() {
   return (
     <motion.div
       variants={cardItem}
-      whileHover={{ scale: 1.01 }}
-      className="rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] py-5 overflow-hidden col-span-1 md:col-span-2 card-glow transition-shadow duration-500"
+      className="rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] p-6 col-span-1 md:col-span-2 card-glow transition-shadow duration-500"
     >
-      <h3 className="text-xs uppercase tracking-widest text-[var(--color-muted-2)] mb-4 font-medium px-6">
+      <h3 className="text-xs uppercase tracking-widest text-[var(--color-muted-2)] mb-4 font-medium">
         Tech Stack
       </h3>
-      <div className="relative overflow-hidden">
-        <motion.div
-          className="flex gap-4 w-max"
-          animate={{ x: [0, -800] }}
-          transition={{
-            x: {
-              duration: 25,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "linear",
-            },
-          }}
-        >
-          {[...techBadges, ...techBadges, ...techBadges].map((badge, i) => (
-            <motion.span
-              key={i}
-              whileHover={{
-                scale: 1.1,
-                borderColor: "rgba(139, 92, 246, 0.3)",
-                y: -2,
-              }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-card-border)] bg-[var(--color-card-hover)] text-sm text-[var(--color-muted)] whitespace-nowrap hover:text-[var(--color-foreground)] transition-colors duration-300 cursor-default"
-            >
-              <span>{badge.icon}</span>
-              {badge.name}
-            </motion.span>
-          ))}
-        </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {techCategories.map((cat) => (
+          <div key={cat.label} className="flex gap-2 text-sm">
+            <span className="text-violet-400 font-semibold whitespace-nowrap min-w-[90px]">
+              {cat.label}:
+            </span>
+            <span className="text-[var(--color-muted)] leading-relaxed">
+              {cat.items}
+            </span>
+          </div>
+        ))}
       </div>
     </motion.div>
   );
@@ -176,7 +109,10 @@ function TechMarquee() {
 /* Location card */
 function LocationCard() {
   return (
-    <TiltCard className="relative rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] overflow-hidden card-glow transition-shadow duration-500">
+    <motion.div
+      variants={cardItem}
+      className="relative rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] overflow-hidden card-glow transition-shadow duration-500"
+    >
       {/* Dark map background */}
       <div className="absolute inset-0 opacity-30">
         <svg viewBox="0 0 400 300" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
@@ -194,21 +130,10 @@ function LocationCard() {
       </div>
 
       <div className="relative p-6 flex flex-col justify-end h-full min-h-[180px]">
-        {/* Animated Pin marker */}
+        {/* Static Pin marker */}
         <div className="mb-4">
           <div className="relative inline-block">
-            <motion.div
-              className="w-3 h-3 bg-violet-500 rounded-full"
-              animate={{
-                scale: [1, 1.3, 1],
-                boxShadow: [
-                  "0 0 0 0 rgba(139, 92, 246, 0.4)",
-                  "0 0 0 10px rgba(139, 92, 246, 0)",
-                  "0 0 0 0 rgba(139, 92, 246, 0)",
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+            <div className="w-3 h-3 bg-violet-500 rounded-full shadow-[0_0_8px_rgba(139,92,246,0.4)]" />
           </div>
         </div>
         <h3 className="text-xs uppercase tracking-widest text-[var(--color-muted-2)] mb-1 font-medium">
@@ -224,14 +149,17 @@ function LocationCard() {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
         </a>
       </div>
-    </TiltCard>
+    </motion.div>
   );
 }
 
 /* Profile card — uses actual photo */
 function ProfileCard() {
   return (
-    <TiltCard className="relative rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] overflow-hidden row-span-2 card-glow transition-shadow duration-500 min-h-[300px]">
+    <motion.div
+      variants={cardItem}
+      className="relative rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] overflow-hidden row-span-2 card-glow transition-shadow duration-500 min-h-[300px]"
+    >
       {/* Actual photo */}
       <div className="absolute inset-0">
         <Image
@@ -253,7 +181,7 @@ function ProfileCard() {
         </h3>
         <p className="text-white font-medium text-lg">Prathmesh Jadhav</p>
       </div>
-    </TiltCard>
+    </motion.div>
   );
 }
 
@@ -298,14 +226,17 @@ export default function BentoGrid() {
           hoverText="Exploring the frontiers of artificial intelligence — from building intelligent RAG-powered agents to crafting modern full-stack applications. I'm fascinated by technologies that will shape our future."
         />
 
-        {/* Row 2 - Marquee spanning 2 cols */}
-        <TechMarquee />
+        {/* Row 2 - Static tech stack spanning 2 cols */}
+        <TechStackCard />
 
         {/* Location card */}
         <LocationCard />
 
         {/* Currently card */}
-        <TiltCard className="rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] p-6 card-glow transition-shadow duration-500">
+        <motion.div
+          variants={cardItem}
+          className="rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] p-6 card-glow transition-shadow duration-500"
+        >
           <h3 className="text-xs uppercase tracking-widest text-[var(--color-muted-2)] mb-3 font-medium">
             Currently
           </h3>
@@ -314,15 +245,11 @@ export default function BentoGrid() {
           </p>
           <div className="mt-4 flex gap-2">
             <span className="inline-flex items-center gap-1 text-xs text-green-400">
-              <motion.span
-                className="w-1.5 h-1.5 bg-green-400 rounded-full"
-                animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
+              <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
               Available for collaboration
             </span>
           </div>
-        </TiltCard>
+        </motion.div>
       </motion.div>
     </section>
   );
