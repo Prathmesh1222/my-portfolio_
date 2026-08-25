@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Prathmesh | Portfolio",
   description:
-    "2nd Year CS Engineering Student — Generative AI, Agentic AI & Full-Stack Development enthusiast. Explore my skills, interests, and more.",
+    "Pre-Final Year CS Engineering Student — Generative AI, Agentic AI & Full-Stack Development enthusiast. Explore my skills, interests, and more.",
   keywords: [
     "Prathmesh",
     "portfolio",

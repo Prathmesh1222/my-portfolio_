@@ -107,7 +107,7 @@ export default function BentoGrid() {
             </h4>
             <p className="text-xs text-violet-500 font-medium mb-3">VIT Bhopal University (2024 - 2028)</p>
             <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-              2nd Year Computer Science Engineering student focusing on scalable systems, core algorithms, data structures, and modern AI engineering.
+              Pre-Final Year Computer Science Engineering student focusing on scalable systems, core algorithms, data structures, and modern AI engineering.
             </p>
           </div>
         </motion.div>

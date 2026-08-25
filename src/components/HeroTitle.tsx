@@ -47,7 +47,7 @@ export default function HeroTitle() {
       >
         <span className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" />
         <span className="text-sm md:text-base text-[var(--color-muted)] uppercase tracking-[0.25em] font-medium">
-          2nd Year CS Engineering Student
+          Pre-Final Year CS Engineering Student
         </span>
       </motion.div>
 
