@@ -122,6 +122,43 @@ export default function CVPage() {
           </div>
         </motion.section>
 
+        {/* Certifications & Honors */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.28, type: "spring", stiffness: 100, damping: 20 }}
+        >
+          <h2 className="text-2xl font-bold border-b border-[var(--color-card-border)] pb-2 mb-6 text-[var(--color-foreground)] flex items-center gap-2">
+            <span className="text-violet-500">_</span> Certifications & Honors
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
+              <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20 mb-2 inline-block">1st Rank</span>
+              <h3 className="font-bold text-[var(--color-foreground)] text-base mb-1">Google Olympics 2.0</h3>
+              <p className="text-xs text-violet-400 mb-2">GDG VIT Bhopal</p>
+              <p className="text-xs text-[var(--color-muted)] leading-relaxed">1st Rank overall in technical problem-solving competition.</p>
+            </div>
+            <div className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
+              <span className="text-xs font-semibold text-red-400 bg-red-500/10 px-2.5 py-0.5 rounded-full border border-red-500/20 mb-2 inline-block">Oracle Certified</span>
+              <h3 className="font-bold text-[var(--color-foreground)] text-base mb-1">OCI 2025 Generative AI Professional</h3>
+              <p className="text-xs text-violet-400 mb-2">Oracle Cloud Infrastructure</p>
+              <p className="text-xs text-[var(--color-muted)] leading-relaxed">Certified in LLM deployment, fine-tuning, and RAG architectures.</p>
+            </div>
+            <div className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
+              <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-500/20 mb-2 inline-block">Microsoft Certified</span>
+              <h3 className="font-bold text-[var(--color-foreground)] text-base mb-1">Azure AI Apps & Agents Developer (AI-103)</h3>
+              <p className="text-xs text-violet-400 mb-2">Microsoft</p>
+              <p className="text-xs text-[var(--color-muted)] leading-relaxed">Specialized in Azure OpenAI & Agentic SDK development.</p>
+            </div>
+            <div className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
+              <span className="text-xs font-semibold text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 mb-2 inline-block">NPTEL Elite</span>
+              <h3 className="font-bold text-[var(--color-foreground)] text-base mb-1">Cloud Computing & Marketing Analytics</h3>
+              <p className="text-xs text-violet-400 mb-2">IIT Kharagpur</p>
+              <p className="text-xs text-[var(--color-muted)] leading-relaxed">Elite certifications in cloud systems and data analytics.</p>
+            </div>
+          </div>
+        </motion.section>
+
         {/* Skills */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
