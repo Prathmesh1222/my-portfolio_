@@ -95,6 +95,33 @@ export default function CVPage() {
           </div>
         </motion.section>
 
+        {/* Leadership & Campus Roles */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, type: "spring", stiffness: 100, damping: 20 }}
+        >
+          <h2 className="text-2xl font-bold border-b border-[var(--color-card-border)] pb-2 mb-6 text-[var(--color-foreground)] flex items-center gap-2">
+            <span className="text-violet-500">_</span> Leadership & Positions
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
+              <h3 className="font-bold text-[var(--color-foreground)] text-lg mb-1">Joint Secretary</h3>
+              <p className="text-sm font-medium text-violet-400 mb-2">Stats-O-Locked Club</p>
+              <p className="text-sm text-[var(--color-muted)] leading-relaxed">
+                Directing technical strategies, leading workshop developments, and overseeing flagship club initiatives.
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] card-glow">
+              <h3 className="font-bold text-[var(--color-foreground)] text-lg mb-1">Resource Team Core</h3>
+              <p className="text-sm font-medium text-violet-400 mb-2">Insight Club</p>
+              <p className="text-sm text-[var(--color-muted)] leading-relaxed">
+                Managing resource allocations, team logistics, and technical execution for domain events.
+              </p>
+            </div>
+          </div>
+        </motion.section>
+
         {/* Skills */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -146,11 +173,6 @@ export default function CVPage() {
                 name: "Voice Calculator",
                 role: "Natural Language Math Engine",
                 desc: "Engineered a native browser PWA interpreting spoken intent to solve complex mathematical derivatives, plots, matrix algebras, and unit conversions seamlessly through Python backends (SymPy/Flask)."
-              },
-              {
-                name: "Autodemo Agent (Stealth)",
-                role: "Autonomous Multi-Agent Extractor",
-                desc: "Constructed an unreleased proprietary multi-agent orchestration grid utilizing LLMs for complete hands-free analysis, screenwriting, headless automated web recording, and video rendering."
               }
             ].map((project, idx) => (
                <div key={idx} className="p-6 rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card)] hover:bg-[var(--color-card-hover)] transition-colors card-glow relative overflow-hidden group">

@@ -4,16 +4,6 @@ import { motion } from "framer-motion";
 
 const exploreItems = [
   {
-    title: "Guestbook",
-    description: "Leave your mark and see what others have to say",
-    href: "/guestbook",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-violet-400">
-        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-      </svg>
-    ),
-  },
-  {
     title: "Achievements",
     description: "Milestones, certifications, and accomplishments",
     href: "/achievements",
@@ -56,7 +46,7 @@ const cardItem = {
 
 export default function ExploreSection() {
   return (
-    <section id="other" className="w-full max-w-6xl mx-auto px-4 mb-24">
+    <section id="other" className="w-full max-w-4xl mx-auto px-4 mb-24">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +67,7 @@ export default function ExploreSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-30px" }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
       >
         {exploreItems.map((item) => (
           <motion.a

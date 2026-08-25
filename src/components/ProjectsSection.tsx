@@ -114,41 +114,7 @@ const projects = [
     color: "from-blue-600/20 via-cyan-500/15 to-teal-500/20",
     icon: "🧮",
   },
-  {
-    name: "Autodemo Agent (Stealth)",
-    tagline: "Autonomous Video Generation Pipeline",
-    description: "XXX XXXXXXXXXX XXXXXXXXXXX XX XXXXXXXXXXXXX XXXXXXXX. XX XXXXXXXX X XXXX XX XXXXXXXXXXX XXX-XXXXXX XX XXXXXXXXXXXX XXXXXXXXX XXX XXX XXXXXXXXXXXX XXXX XXXXX XXXXXXXX, XXXXXXXXX XXXXXXXXXXXX XXXXX XXXXXXXXXXXXXX.",
-    features: [
-      {
-        icon: "🤖",
-        name: "XXXXXXXXX-XXXXX",
-        desc: "XXXXXXXXXX XXX XXXXX",
-        detail: "X XXXXXX XXXXXXX XXXXXX XXXXXXXXXXXXX XXXXXXXXXXX XXX-XXXXXX XXX XXXXXXXXXX XXXXXXXX, XXXXXXXXXXXXX, XXX XXXXX XXXXXXXXX XXXXXXX XXXXX XXXXXXXXXXXX."
-      },
-      {
-        icon: "🎭",
-        name: "XXXXXXXX XXXXXXXXX",
-        desc: "XXXXXXXXXXXX XX XXXXXXXXXX",
-        detail: "XXXXXXXXXXXXXX XXXXXXXXX XXX XXXXXXX XXXXXXX XX XXXXXXXXXXXX XX XXXX-XXXX XXXXX XX XXXXXXXXXXX XXXXXXXXX XXXXXXX."
-      },
-      {
-        icon: "🎙️",
-        name: "XXXXXXX XXXXXXXXX",
-        desc: "XXXXX & XXXXXXXX XXXXXXXXXX",
-        detail: "XXXXXXXXXXXX XXXXXXXXX XXXXX-XXXXXXXXX XXXXXXXXXX, XXXX-XXXXXXXX, XXX XXXXXX XXXXX XXXXXXXXX XXXXXXXX XXXX-XX-XXXXXX XXXXXXXXXXXXX."
-      },
-      {
-        icon: "🎬",
-        name: "XXXXXXXXX XXXXXXXX",
-        desc: "XXXXX-XXXX XXXXX XXXXXXXXX",
-        detail: "XXXXXXXX XXXXX, XXXXX, XXX XXXX XXXXXXXXX XXXXXXXXXXXX XXXXXXXXXXXXXX XXX XXXXXX XXXXXXXX-XXXXXXXX XXXXXXXXXX XXX XXXXXXXXXX XXXXX-XXXX XXXXXXXXX."
-      }
-    ],
-    techStack: ["XXXXX", "XXXXXXXXX", "XXXXXX", "XXX", "XXXX"],
-    github: "#stealth",
-    color: "from-rose-600/20 via-orange-500/15 to-amber-500/20",
-    icon: "🎥",
-  },
+
 ];
 
 const container = {
