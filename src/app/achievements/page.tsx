@@ -9,6 +9,7 @@ interface Certification {
   title: string;
   org: string;
   badge: string;
+  date?: string;
   credentialId?: string;
   badgeColor: string;
   icon: string;
@@ -21,6 +22,8 @@ const certifications: Certification[] = [
     title: "OCI 2025 Certified Generative AI Professional",
     org: "Oracle Cloud Infrastructure (OCI)",
     badge: "Certified Professional",
+    date: "July 23, 2026",
+    credentialId: "ID: 329926620OCI25GAIOCP",
     badgeColor: "from-red-600 to-amber-600",
     icon: "🔴",
     image: "/certificates/oci-genai.png",
@@ -30,6 +33,8 @@ const certifications: Certification[] = [
     title: "Azure AI Apps and Agents Developer Associate (AI-103)",
     org: "Microsoft Certified",
     badge: "Microsoft Certified",
+    date: "July 25, 2026",
+    credentialId: "ID: E54B9C60A3070921",
     badgeColor: "from-blue-600 to-cyan-500",
     icon: "🔷",
     image: "/certificates/azure-ai103.png",
